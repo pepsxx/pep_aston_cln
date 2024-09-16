@@ -1,0 +1,9 @@
+services:
+  aston_db_ps:
+    container_name: PostgreSQL-40354
+    image: postgres
+    ports:
+      - "40354:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: qQ111111
