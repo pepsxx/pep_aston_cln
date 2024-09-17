@@ -8,8 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -22,19 +22,16 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BankAccountServiceImpl implements BankAccountService {
 
-    private final BankAccountRepository bankAccountRepository;
     private final BankAccountMapper bankAccountMapper;
+    private final BankAccountRepository bankAccountRepository;
+    private final RequestEntity<Void> requestEntityForBankAccountMethodGet;
 
     @Override
     @SneakyThrows
     public void saveAllBankAccountInDB() {
 
-        final String URL = "http://localhost:8080/api/v1/bank_account/report";
-
         Optional.of(new RestTemplate().exchange(
-                        URL,
-                        HttpMethod.GET,
-                        null,
+                        requestEntityForBankAccountMethodGet,
                         new ParameterizedTypeReference<List<BankAccountDto>>() {
                         })
                 )
@@ -49,4 +46,5 @@ public class BankAccountServiceImpl implements BankAccountService {
                 );
 
     }
+
 }
