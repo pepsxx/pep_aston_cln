@@ -10,6 +10,7 @@ class PepAstonClnApplicationTests {
     void contextLoads() {
         System.out.println("This is a test 001");
         System.out.println("This is a test 001");
+        System.out.println("This is a test 001");
     }
 
 }
