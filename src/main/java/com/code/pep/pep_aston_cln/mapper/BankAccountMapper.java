@@ -2,30 +2,18 @@ package com.code.pep.pep_aston_cln.mapper;
 
 import com.code.pep.pep_aston_cln.dto.BankAccountDto;
 import com.code.pep.pep_aston_cln.entity.BankAccount;
-import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-@Component
-public class BankAccountMapper {
+/**
+ * Маппер для BankAccount
+ */
+public interface BankAccountMapper {
+    BankAccount bankAccountDtoToBankAccount(BankAccountDto bankAccountDto);
 
-    public BankAccount bankAccountDtoToBankAccount(BankAccountDto bankAccountDto) {
+    /**
+     * Маппер из List BankAccountDto в List BankAccount
+     */
+    List<BankAccount> listBankAccountDtoToListBankAccount(List<BankAccountDto> listBankAccountDto);
 
-        return BankAccount.builder()
-                .name(bankAccountDto.getName())
-                .money(bankAccountDto.getMoney())
-                .numberAccount(bankAccountDto.getNumberAccount())
-                .timeAdding(LocalDateTime.now())
-                .build();
-
-    }
-
-    public List<BankAccount> listBankAccountDtoToListBankAccount(List<BankAccountDto> listBankAccountDto) {
-
-        return listBankAccountDto.stream()
-                .map(this::bankAccountDtoToBankAccount)
-                .toList();
-
-    }
 }
