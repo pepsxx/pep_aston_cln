@@ -1,6 +1,6 @@
 package com.code.pep.pep_aston_cln.scheduler;
 
-import com.code.pep.pep_aston_cln.service.impl.BankAccountServiceImpl;
+import com.code.pep.pep_aston_cln.service.BankAccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ReportScheduler {
 
-    private final BankAccountServiceImpl bankAccountService;
+    private final BankAccountService bankAccountService;
 
     @Scheduled(fixedRate = 10_000)
     public void saveAllBankAccountInDB() {
@@ -31,4 +31,5 @@ public class ReportScheduler {
         log.info("Stop to save bank account in db");
 
     }
+
 }
