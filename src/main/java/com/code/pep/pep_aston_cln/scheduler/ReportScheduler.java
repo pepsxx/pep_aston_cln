@@ -13,7 +13,7 @@ public class ReportScheduler {
 
     private final BankAccountService bankAccountService;
 
-    @Scheduled(fixedRate = 30_000)
+    @Scheduled(fixedRate = 10_000)
     public void saveAllBankAccountInDB() {
 
         log.info("Start to save bank account in db");
