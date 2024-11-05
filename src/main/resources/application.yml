@@ -4,7 +4,7 @@ spring:
   application.name: pep_aston_cln
 
   datasource:
-    url: jdbc:postgresql://localhost:40354/postgres
+    url: jdbc:postgresql://localhost:40354/pep_db
     username: admin
     password: qQ111111
     driver-class-name: org.postgresql.Driver
@@ -16,7 +16,7 @@ spring:
       password: ${spring.datasource.password}
       driver_class: ${spring.datasource.driver-class-name}
     default_schema: public
-    hbm2ddl.auto: update                                      # update # validate
+    hbm2ddl.auto: validate                                       # update # validate
     show_sql: false   # Показывает SQL запросы в консоли         # true   # false
     format_sql: false # Показывает SQL запросы не в одну строчку # true   # false
 
